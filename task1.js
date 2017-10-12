@@ -4,16 +4,16 @@
         
         switch (operation) {
             case "sum":
-                consoel.log(parseInt(num1 + num2))
+                console.log(parseInt(num1 + num2))
                 break
             case "mult":
-                consoel.log(num1 * num2)
+                console.log(num1 * num2)
                 break
             case "div":
                 if (num2 !== '0') {
-                    consoel.log(num1 / num2)
+                    console.log(num1 / num2)
                 } else {
-                    consoel.log(WARNING_MSG)                    
+                    console.log(WARNING_MSG)                    
                 }
                 break
         }
