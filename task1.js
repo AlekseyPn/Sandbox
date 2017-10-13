@@ -1,5 +1,6 @@
 (function () {
-    var WARNING_MSG = 'Делить на ноль нельзя! Введите другое число или операцию.'
+    var WARNING_MSG = 'Делить на ноль нельзя! Введите другое число или операцию.',
+        DEFAULT_MSG = 'Введенные параметры не верны, проверьте правильность введеных параметров и повторите операцию.'
     var math = function (operation, num1, num2) {
         
         switch (operation) {
@@ -16,6 +17,8 @@
                     console.log(WARNING_MSG)                    
                 }
                 break
+            default:
+                console.log(DEFAULT_MSG)
         }
     }
 
