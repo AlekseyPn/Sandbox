@@ -4,8 +4,8 @@
  * @param {String} string 
  * @returns {String} - random sorted string
  */
-function randomizeString (string) {
-    let stringClone = string.split('');
+function randomizeString (string) {    
+    let stringClone = string.split('');    
     return stringClone.sort(function () {
         return Math.random() - 0.5
     }).join('')
@@ -20,7 +20,8 @@ function randomizeString (string) {
  * return apple_pen
  */
 function replaceSpaces (string) {
-    return string.replace(/\s/, /_/)    
+    
+    return string.replace(/\s/, '_')    
 }
 
 /**
@@ -33,17 +34,24 @@ function replaceSpaces (string) {
  */
 function camelCaseString (string) {
     let camelCaseString = string.split('') 
-    camelCaseString.forEach(function (it, index) {
-        if (index % 2 === 1) {
+    camelCaseString = camelCaseString.map(function (it, index) {
+        if (index % 2 === 1) {            
             it = it.toUpperCase()
+            return it
         }
         return it
-    })
-    return camelCaseString
+    })   
+    return camelCaseString.join('')
+}
+
+let mappingString = function  (string) {   
+    return new Promise (resolve => {        
+        resolve(string)
+    }).then(string => camelCaseString(string))
+        .then(camelCaseString => replaceSpaces(camelCaseString))
+        .then(replacedString => randomizeString(replacedString))          
 }
 
 module.exports = {
-    camelCaseString,
-    replaceSpaces,
-    randomizeString
+    mappingString
 }
