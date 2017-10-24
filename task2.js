@@ -57,26 +57,19 @@ function camelCaseString(string) {
  * @param {String} string 
  * @return {String} - string which will modified through 3 functions
  */
-let mappingString = function (string) {
-    let mappedString;
-    new Promise((resolve, reject) => {
-        if (typeof string === 'string') {
-            setTimeout(resolve(string), 2000)
+let mappingString = function (string) {        
+    var i = 0
+    function resolve(string, cbArray) {
+        let mappedString = string
+        for (i; i < cbArray.length; i++) {
+            mappedString = cbArray[i](mappedString)
         }
-        reject()
-    })
-        .then((string) => {
-            return camelCaseString(string)
-        })
-        .then((camelCaseString) => {
-            return replaceSpaces(camelCaseString)
-        })
-        .then((replacedString) => {
-            mappedString = randomizeString(replacedString)
-        })
-    setTimeout(function () {
         return mappedString
-    }, 3000)
+    }
+    if (typeof string === 'string') {
+        return resolve(string, [camelCaseString, replaceSpaces, randomizeString])
+    }
+    return 'Error: argument not a string'    
 }
 /**
  * 
