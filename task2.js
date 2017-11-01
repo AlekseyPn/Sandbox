@@ -1,6 +1,4 @@
 /**
- * 
- * 
  * @param {String} string 
  * @example randomizeString ('apple pen') => 'eppa plen'
  * @return {String} - random sorted string
@@ -16,8 +14,6 @@ function randomizeString(string) {
 }
 
 /**
- * 
- * 
  * @param {String} string  * 
  * @example replaceSpaces('apple pen') => 'apple_pen'
  * @return {String} - string with replaced spaces on '_'
@@ -30,8 +26,6 @@ function replaceSpaces(string) {
 }
 
 /**
- * 
- * 
  * @param {String} string 
  * @example camesCaseString('apple pen') => 'appLe pEn' 
  * @return {String} - modified string
@@ -52,8 +46,6 @@ function camelCaseString(string) {
 }
 
 /**
- * 
- * 
  * @param {String} string 
  * @return {String} - string which will modified through 3 functions
  */
@@ -73,8 +65,6 @@ let mappingString = function (string) {
     
 }
 /**
- * 
- * 
  * @param {Number} width 
  * @param {Number} height 
  */
@@ -82,12 +72,24 @@ function draw(width, height) {
     let line;
     let i
     let j
-    for (i = 0; i < height; i++) {
+    for (i = 1; i <= height; i++) {
         line = '';
-        for (j = 0; j < width; j++) {
-            line += '* ' 
+        for (j = 1; j <= width; j++) {
+            if (i === 1 || i === height){
+                line += '* '            
+                continue
+            }                            
+            if (1 < i && i <= height) {
+                if (1 < j && j < width) {
+                    line += '_ '           
+                    continue
+                }                    
+                line += '* '
+                continue
+            }                
+            line += '_ '                
         }
-        return console.log(line)
+        console.log(line)
     }
 }
 
