@@ -6,13 +6,13 @@
  * @return {String} - random sorted string
  */
 function randomizeString(string) {
-    if (typeof string === 'string') {
-        let stringClone = string.split('');
+    if (typeof string !== 'string') {
+        return 'Error: argument not a string'        
+    }
+    let stringClone = string.split('');
         return stringClone.sort(function () {
             return Math.random() - 0.5
-        }).join('')
-    }
-    return 'Error: argument not a string'
+        }).join('')    
 }
 
 /**
@@ -23,10 +23,10 @@ function randomizeString(string) {
  * @return {String} - string with replaced spaces on '_'
  */
 function replaceSpaces(string) {
-    if (typeof string === 'string') {
-        return string.replace(/\s/, '_')
+    if (typeof string !== 'string') {
+        return 'Error: argument not a string'        
     }
-    return 'Error: argument not a string'
+    return string.replace(/\s/, '_')    
 }
 
 /**
@@ -37,8 +37,10 @@ function replaceSpaces(string) {
  * @return {String} - modified string
  */
 function camelCaseString(string) {
-    if (typeof string === 'string') {
-        let camelCaseString = string.split('')
+    if (typeof string !== 'string') {
+        return 'Error: argument not a string'        
+    }
+    let camelCaseString = string.split('')
         camelCaseString = camelCaseString.map(function (it, index) {
             if (index % 2 === 1) {
                 it = it.toUpperCase()
@@ -46,9 +48,7 @@ function camelCaseString(string) {
             }
             return it
         })
-        return camelCaseString.join('')
-    }
-    return 'Error: argument not a string'
+        return camelCaseString.join('')    
 }
 
 /**
@@ -59,7 +59,7 @@ function camelCaseString(string) {
  */
 let mappingString = function (string) {        
     var i = 0
-    function resolve(string, cbArray) {
+    function mapping(string, cbArray) {
         let mappedString = string
         for (i; i < cbArray.length; i++) {
             mappedString = cbArray[i](mappedString)
@@ -67,9 +67,10 @@ let mappingString = function (string) {
         return mappedString
     }
     if (typeof string === 'string') {
-        return resolve(string, [camelCaseString, replaceSpaces, randomizeString])
+        return 'Error: argument not a string'            
     }
-    return 'Error: argument not a string'    
+    return mapping(string, [camelCaseString, replaceSpaces, randomizeString])
+    
 }
 /**
  * 
@@ -86,7 +87,7 @@ function draw(width, height) {
         for (j = 0; j < width; j++) {
             line += '* ' 
         }
-        console.log(line)
+        return console.log(line)
     }
 }
 
