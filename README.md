@@ -1,5 +1,5 @@
 # My plan on 2018
-1. Vue js sample
+1. Rectjs
 2. More native js practice.
 3. Typescript practice
 4. Learn Reactjs and practice.
