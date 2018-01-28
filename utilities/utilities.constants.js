@@ -1,0 +1,1 @@
+const regexpForFindRepeatedChar = /(.)\1+/g;
